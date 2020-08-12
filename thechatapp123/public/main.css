@@ -1,0 +1,17 @@
+
+body{
+    background: url(https://images.pexels.com/photos/1111369/pexels-photo-1111369.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260) no-repeat center center fixed; 
+    
+    color:lightyellow;
+    font-family: 'Comfortaa', cursive;
+}
+h1,h3{
+    text-shadow: black;
+}
+#content{
+    text-align: center;
+    padding-top: 25%;
+}
+.container{
+    margin-top: 5%;
+}

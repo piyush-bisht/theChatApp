@@ -1,0 +1,102 @@
+<%-include ('partials/header') %>
+<%- include ("partials/navbar") %>
+
+<div id="scroll">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4 lg" id="h1" style="text-align: left;">The Chat App</h1>
+            <p class="lead">Welcome to the world of relentless chatting, free of cost</p>
+    
+        </div>
+       
+    </div>
+
+    <div id="homeContent"class="container" style="text-align: center;">
+    <%if(!currentUser){%>
+    <input id="inputid" value="nouser" hidden>    
+    <a href="/register" class="btn btn-dark btn-lg">Sign Up</a>
+    <hr>
+    <div>
+        <p>Already have an Account?<a href="/login">Log in</a></p>
+    </div>
+    <%}else{%>
+        <input id="inputid"  value="user" hidden>
+        <p class="lead" style="font-size: 300%; "> Well,Alrighty </p>    
+        <div><a class="btn btn-success btn-lg" href="/chat/<%=currentUser._id%>">Go to profile</a></div>
+        <%}%>
+    </div>   
+    <div class="jumbotron " id="info">
+        <div class="container">
+            <div class=row>
+
+                <div class="col-lg" style="margin-top: 20px;">
+                    <h4>Contact us:</h4>
+                    <hr style=" margin-top:24px; border: 1px; border-top:1px solid rgba(255, 255, 255, 0.5);"> 
+                    <p>Write to us at</p>
+                    <p>piyush.bisht3@gmail.com</p>
+                    <p>or, connect with us at</p>
+                    <div >
+                    <span style="display:inline-block; margin-left: 0px ;"><a style="color:white" href="https://www.instagram.com/thats_piyush/"><i class="fa fa-instagram fa-lg" style="font-size: 20px;"></i></a></span>
+                    <span style="display:inline-block ; margin-left: 10px"></span><a style="color:white"href="https://www.facebook.com/piyush.bisht.184"><i class="fa fa-facebook-f"></i></a></span>
+                    <span style="display:inline-block ;margin-left: 10px"></span><a style="color:white" href=""><i class="fa fa-github-square"></i></a></span>
+                    
+                    </div>
+                </div>
+                <div class="col-lg" style="margin-top: 20px;">
+                    <div>
+                        <p class="lead" style="margin:0 ;font-weight: 400;">
+                            Leave a comment
+                        </p>
+                        <p style="margin: 0 auto; padding: 0; font-weight: 200;">Cause your feedback is valuable to us.</p>
+                        <hr style="padding: 0; margin:0; border: 1px; border-top:1px solid rgba(255, 255, 255, 0.5);"> 
+                        <div id="commentbox" class="container" style="  padding: 0; height:200px; overflow-y: scroll;">
+                            <%if(comments.length!=0){%>
+                                <% for(i of comments) {%>
+                                    <% console.log(i) %> 
+                                    <div style="margin: ;"  >
+                                        <span class="badge badge-pill badge-light "><%= i.user.firstName %></span>
+                                        <span class="em" style="font-weight: 100; font-size: 15px;">:  <%= i.text %></span>
+                                        
+                                    </div>
+                                    
+                                <%}%> 
+                                <% } %> 
+                        </div>
+                        <form action="/chat" method="POST">
+                        <input  class="form-control form-control-sm" style="margin-top: 5px;" name="comment" placeholder="comment">
+                        </form>
+                    </div>
+                
+
+            </div>
+            </div>
+
+
+
+        </div>
+
+
+    </div> 
+
+
+</div>
+</body>
+<script>
+    //to show navbar on scroll
+
+    var navbar=document.querySelector(".navbar");
+    var scrollDiv=document.querySelector("#scroll");
+    var text=document.querySelector("#inputid");
+    if(text.value=="nouser"){
+        navbar.classList.add("noneDisplay");
+        navbar.classList.add("fixed-top");
+    }
+    else{
+        navbar.classList.remove("noneDisplay");
+        navbar.classList.add("fixed-top");
+    }
+
+    
+    
+</script>
+</html>

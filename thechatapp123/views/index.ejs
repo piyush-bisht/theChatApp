@@ -1,0 +1,48 @@
+
+<%- include("partials/header")%>
+<%- include ("partials/navbar") %>
+
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" style="margin-top: 40px;">
+              
+              <li class='list-group-item' id="heading">Chat Members</li>
+              <ul class="list-group" id="list">
+                
+              </ul>
+            </div>
+                <div class="col-md-9" style="margin-top: 40px;">
+                  <div >
+                    <li class='list-group-item' style="height: 70px;" id="Room" value="<%=room%>">Room No: <%=room%>
+                    <div id="feedback"></div>
+                  </li>
+                  </div>
+                  
+                  
+                  <div class="thumbnail border"   id="output" style="height: 500px ;box-shadow: black 5px;border: 0.5px rgb(172, 159, 159) solid;  overflow: scroll; ">
+                    
+                    <%for(i of message){%>
+                        <div class=" messagebox" >
+                          <p ><span id="sendername"><%=i.sender%></span>:<em><%=i.createdAt%></em></p>
+                          <p id="text"><%=i.text%></p>
+                      </div>
+                        <% } %> 
+                  </div>
+                
+                  <div>
+                      <div style="display: flex; margin-top: 10px; margin-bottom: 5px; ">
+                        <input  style="display: inline-block; display: none" id="handle" type="text" placeholder="Handle" value=<%=currentUser.firstName%> disabled>
+                        <input class="form-control"id="message" type="text" placeholder="Message">
+                        <button class="btn btn-dark btn-sm" id="send"><i class="fa fa-share"></i></button>
+                      </div>
+                  </div>  
+                </div>
+                </div>
+                  
+        </div>
+    </body>
+    <script src="/chat.js">
+    </script>
+
+</html>
